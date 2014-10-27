@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Copyright (c) 2009, The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+*/
+-->
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Headset Event Handler Strings -->
+    <add-resource type="string" name="device_name_usb_headset" />
+    <string name="device_name_usb_headset">usb_audio</string>
+    <add-resource type="string" name="device_name_wired_headset" />
+    <string name="device_name_wired_headset">h2w</string>
+    <add-resource type="string" name="bluetooth_headset_connected" />
+    <string name="bluetooth_headset_connected">Bluetooth headset connected!</string>
+    <add-resource type="string" name="bluetooth_headset_disconnected" />
+    <string name="bluetooth_headset_disconnected">Bluetooth headset disconnected!</string>
+    <add-resource type="string" name="wired_headset_connected" />
+    <string name="wired_headset_connected">Wired headset connected!</string>
+    <add-resource type="string" name="wired_headset_disconnected" />
+    <string name="wired_headset_disconnected">Wired headset disconnected!</string>
+    <add-resource type="string" name="usb_headset_connected" />
+    <string name="usb_headset_connected">USB headset connected!</string>
+    <add-resource type="string" name="usb_headset_disconnected" />
+    <string name="usb_headset_disconnected">USB headset disconnected!</string>
+</resources>
