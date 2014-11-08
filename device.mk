@@ -18,6 +18,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/../jedroid-kernel/zImage:root/boot/zImage \
     $(LOCAL_PATH)/../jedroid-kernel/tegra124-pm375.dtb:root/boot/tegra124-pm375.dtb \
     $(LOCAL_PATH)/../jedroid-kernel/extlinux.conf:root/boot/extlinux.conf \
+    $(LOCAL_PATH)/flash.sh:./ \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.tegra.rc:root/init.tegra.rc \
@@ -90,6 +91,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,device/nvidia/jedroid/iwlwifi,system/etc/firmware/) \
+    $(call find-copy-subdir-files,*,device/nvidia/jedroid-bootloader,bootloader) \
 
 RRODUCT_PACKAGES += \
     setup_fs \
@@ -109,9 +111,14 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_CHARACTERISTICS := tablet
 
+	
 
 #Default config in /default.conf
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	    persist.sys.usb.config=mtp
+
+PRODUCT_PACKAGES += \
+    Rotationlocker \
+    Limelight
 
 $(call inherit-product-if-exists, vendor/nvidia/jedroid/device-vendor.mk)
