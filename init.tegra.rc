@@ -42,7 +42,7 @@ on post-fs-data
     mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
     mkdir /data/misc/wifi/firmware 0770 wifi wifi
-    setprop wifi.supplicant wpa_suppl_nl
+    setprop wifi.supplicant wpa_supplicant
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     mkdir /data/nvcam 0700 media camera
     chown dhcp dhcp /data/misc/dhcp
@@ -261,28 +261,6 @@ on device-added-/sys/block/sda
 on device-removed-/sys/block/sda
   umount /mnt/media_rw/usbdrive
 
-# start the PBC daemon
-service pbc /system/bin/pbc
-    class main
-    user root
-    group root
-
-on property:ro.boot.touch_vendor_id=0
-    start rm_ts_service
-
-# unified scaling setup
-service ussr_setup /system/bin/ussr_setup.sh
-    class main
-    user root
-    group root
-    oneshot
-
-# unified scaling process
-service ussrd /vendor/bin/ussrd
-    user system
-    group system
-    class main
-
 service cvc /vendor/bin/cvc
     user system
     group system
@@ -299,11 +277,10 @@ service dns_masq /system/bin/dnsmasq --no-daemon --no-resolv --no-poll --dhcp-op
     disabled
     oneshot
 
-service wpa_suppl_nl /system/bin/wpa_supplicant \
+service wpa_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
-    -z /data/misc/wifi/p2p_supplicant.conf \
     -O/data/misc/wifi/sockets \
-    -e/data/misc/wifi/entropy.bin -puse_p2p_group_interface=1p2p_device=1 \
+    -e/data/misc/wifi/entropy.bin \
     -g@android:wpa_wlan0
 #   we will start as root and wpa_supplicant will switch to user wifi
 #   after setting up the capabilities required for WEXT
@@ -323,3 +300,10 @@ service powerservice /vendor/bin/powerservice
     class main
     user system
     group system
+    
+service su /system/xbin/daemonsu --auto-daemon
+    class main
+    user root
+    group root
+    oneshot
+

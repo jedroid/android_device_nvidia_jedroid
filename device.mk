@@ -15,6 +15,13 @@
 #
 
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/../jedroid-bootloader/bct.cfg:bootloader/bct.cfg \
+    $(LOCAL_PATH)/../jedroid-bootloader/fastboot.bin:bootloader/fastboot.bin \
+    $(LOCAL_PATH)/../jedroid-bootloader/flash.cfg:bootloader/flash.cfg \
+    $(LOCAL_PATH)/../jedroid-bootloader/gpt.img:bootloader/gpt.img \
+    $(LOCAL_PATH)/../jedroid-bootloader/nvflash:bootloader/nvflash \
+    $(LOCAL_PATH)/../jedroid-bootloader/ppt.img:bootloader/ppt.img \
+    $(LOCAL_PATH)/../jedroid-bootloader/u-boot.bin:bootloader/u-boot.bin \
     $(LOCAL_PATH)/../jedroid-kernel/zImage:root/boot/zImage \
     $(LOCAL_PATH)/../jedroid-kernel/tegra124-pm375.dtb:root/boot/tegra124-pm375.dtb \
     $(LOCAL_PATH)/../jedroid-kernel/extlinux.conf:root/boot/extlinux.conf \
@@ -84,6 +91,7 @@ PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/etc/enctune.conf:system/etc/enctune.conf \
    $(LOCAL_PATH)/etc/nvaudio_fx.xml:system/etc/nvaudio_fx.xml \
    $(LOCAL_PATH)/etc/ussrd.conf:system/etc/ussrd.conf \
+   $(LOCAL_PATH)/etc/init.bt.sh:system/etc/init.bt.sh \
 
 PRODUCT_COPY_FILES += \
     device/nvidia/jedroid/nvcms/device.cfg:system/lib/nvcms/device.cfg 
@@ -91,7 +99,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,device/nvidia/jedroid/iwlwifi,system/etc/firmware/) \
-    $(call find-copy-subdir-files,*,device/nvidia/jedroid-bootloader,bootloader) \
 
 RRODUCT_PACKAGES += \
     setup_fs \
@@ -119,6 +126,15 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PACKAGES += \
     Rotationlocker \
+    SuperUser \
     Limelight
+
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,device/nvidia/jedroid/3rdparty/SuperUser/.ext,system/bin/) \
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/3rdparty/SuperUser/su:system/xbin/su \
+    $(LOCAL_PATH)/3rdparty/SuperUser/su:system/xbin/daemonsu \
+    $(LOCAL_PATH)/3rdparty/SuperUser/.installed_su_daemon:system/etc/.installed_su_daemon \
 
 $(call inherit-product-if-exists, vendor/nvidia/jedroid/device-vendor.mk)
