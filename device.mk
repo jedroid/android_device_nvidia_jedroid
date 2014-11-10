@@ -25,7 +25,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/../jedroid-kernel/zImage:root/boot/zImage \
     $(LOCAL_PATH)/../jedroid-kernel/tegra124-pm375.dtb:root/boot/tegra124-pm375.dtb \
     $(LOCAL_PATH)/../jedroid-kernel/extlinux.conf:root/boot/extlinux.conf \
-    $(LOCAL_PATH)/flash.sh:./ \
+    $(LOCAL_PATH)/flash.sh:./flash.sh \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.tegra.rc:root/init.tegra.rc \
